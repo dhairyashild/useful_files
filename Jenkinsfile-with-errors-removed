@@ -24,7 +24,19 @@ sh 'mvn clean package'  // ######## yaml sarakhe varchya line mde yav as nhi ata
         dir ('/home/ubuntu/workspace/p1') { //##### dir nantar ('path') { he bracket dyave  and te close karave command nantar
         sh ('touch x.txt')     // sh command nantar ('  ') bracket dil tari chalte or nahi dile tari chalte         }
             }
+              stage("build-docker"){  
+            steps{
+        sh 'docker --version '  // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
+        dir ('/home/ubuntu/workspace/p1') {
+           // sh command nantar ('          ') bracket dil tari chalte or nahi dile tari chalte         }
+        sh 'docker build -t image2 /home/ubuntu/workspace/'
+            }
             
+        }  
+    
+    }
+    }
+}
         }  
     }
 
