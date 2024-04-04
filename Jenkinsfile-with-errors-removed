@@ -1,11 +1,11 @@
 pipeline {   
     agent any
     tools{
-      maven "maven"   ###### here 1st maven word must be SMALL LETTERS & "here u must write which name u gave in Tools--Configure tools, their locations and automatic installers"
+      maven "maven"  // ###### here 1st maven word must be SMALL LETTERS & "here u must write which name u gave in Tools--Configure tools, their locations and automatic installers"
     }
     stages{
-        stage("clone"){   ##### my wrong code was-- (clone) here u can enclose it with single inverted commas like ('clone') or double ("clone") --both correct
-            steps{        ##### my wrong code was-- step and correct= steps
+        stage("clone"){   //##### my wrong code was-- (clone) here u can enclose it with single inverted commas like ('clone') or double ("clone") --both correct
+            steps{        //##### my wrong code was-- step and correct= steps
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/dhairyashild/maven-java-simple-app.git']])
             }
             
@@ -14,7 +14,7 @@ pipeline {
 
        stage("build"){  
             steps{
-sh 'mvn clean package'   ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
+sh 'mvn clean package'  // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
             }
             
         }  
@@ -22,4 +22,4 @@ sh 'mvn clean package'   ######## yaml sarakhe varchya line mde yav as nhi ata h
     }
 
   
-}
+
