@@ -1,0 +1,78 @@
+pipeline {
+    agent {
+        label 'docker'
+    }
+    tools {
+        maven "maven"
+        // docker "docker"
+    }
+    stages {
+        stage("clone") {
+            steps {
+checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/dhairyashild/springboot-java-poject-small-devopsshack-copy.git']])       
+                    }
+        }
+        stage("build") {
+            steps {
+                dir ('/jenkins/workspace/eks-project-full-cicd/'){
+                sh 'mvn clean install'
+                }
+                    
+                }
+        }
+        
+        stage("sonar") {
+            steps {
+                sh '''mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=eks-proect \
+  -Dsonar.host.url=http://13.126.135.85:9000 \
+  -Dsonar.login=sqp_6b8810eee2c88a916942335fdf51d893463a1286'''
+                
+                }
+                    
+                }
+                
+                  stage("jfrog") {
+                       agent {
+                          label 'jfrog'
+    }
+            steps {
+                  sh 'mvn deploy'  }
+        } 
+                
+                
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // stage("build-docker") {
+        //     steps {
+        //         sh 'docker --version'
+        //         dir('/root/workspace/eks-project-full-cicd') {
+                   
+        //         }
+        //     }
+        // }
+        // stage("build-docker-image") {
+        //     steps {
+        //         sh 'docker --version'
+        //         dir('/jenkins/workspace/eks-project-full-cicd') {
+        //             // You can add more shell commands here
+        //         }
+        //         sh 'docker build -t image /jenkins/workspace/eks-project-full-cicd/'
+        //     }
+        // }
+    
