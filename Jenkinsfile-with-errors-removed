@@ -1,33 +1,61 @@
 pipeline {   
-    agent any
+                                 // ##### agent any or 
+    agent {
+        label 'docker'           // ###### if u gave this outside any stage like this line agent all jobs data saved on this label agent server
+          }
+
+
     tools{
-      maven "maven"  // ###### here 1st maven word must be SMALL LETTERS & "here u must write which name u gave in Tools--Configure tools, their locations and automatic installers"
-    }
+      maven "maven"              // ###### here 1st maven word must be SMALL LETTERS & "here u must write which name u gave in Tools--Configure tools, their locations and automatic installers"
+                                 // ###### no need to add DOCKER , SONARQUBE , JFROG in tools section
+          }
+
     stages{
-        stage("clone"){   //##### my wrong code was-- (clone) here u can enclose it with single inverted commas like ('clone') or double ("clone") --both correct
-            steps{        //##### my wrong code was-- step and correct= steps
+        stage("clone"){          //##### my wrong code was-- (clone) here u can enclose it with single inverted commas like ('clone') or double ("clone") --both correct
+            steps{               //##### my wrong code was-- step and correct= steps
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/dhairyashild/maven-java-simple-app.git']])
             }
             
         }
-    
 
-       stage("build"){  
+
+
+
+       stage("build") {  
             steps{
-sh 'mvn clean package'  // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
-            }
-            
-        }  
+dir ('/jenkins/workspace/eks-project-full-cicd/'){       // ######## dir('this is path where u need to run commands where below commands run')
+sh 'mvn clean package'            // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
+                                // ########   mvn command not found ---1) tools mde maven che je nav global tool conf mde dilay te dya  2) mvn integration plugin dya 
+}                                
+              }            
+                      }  
+
+
+
+      stage("sonar") {             // ######## this all copied from sonar server
+            steps {
+                sh '''mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=eks-proect \
+  -Dsonar.host.url=http://13.126.135.85:9000 \
+  -Dsonar.login=sqp_6b8810eee2c88a916942335fdf51d893463a1286'''
+                
+                }  
+                }
+
+
+
+                                  // khalche folder chya location mi change kelyat just samjay dilay tith value projectnusar change hotyat
+
     stage("build-docker"){  
             steps{
-        sh 'docker --version '  // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
-        dir ('/home/ubuntu/workspace/p1') { //##### dir nantar ('path') { he bracket dyave  and te close karave command nantar
-        sh ('touch x.txt')     // sh command nantar ('  ') bracket dil tari chalte or nahi dile tari chalte         }
+        sh 'docker --version'     // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
+        dir ('/home/ubuntu/workspace/pipe') { //##### dir nantar ('path') { he bracket dyave  and te close karave command nantar
+        sh ('touch x.txt')         // sh command nantar ('  ') bracket dil tari chalte or nahi dile tari chalte         }
             }
               stage("build-docker"){  
             steps{
-        sh 'docker --version '  // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
-        dir ('/home/ubuntu/workspace/p1') {
+        sh 'docker --version '      // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
+        dir ('/home/ubuntu/jenkins/workspace/pipe') {
            // sh command nantar ('          ') bracket dil tari chalte or nahi dile tari chalte         }
         sh 'docker build -t image2 /home/ubuntu/workspace/'
             }
@@ -40,7 +68,7 @@ sh 'mvn clean package'  // ######## yaml sarakhe varchya line mde yav as nhi ata
         }  
     }
 
-
-
-  
+                                    
+                                     
+                                      // ########  sh '       '  = terminal samaj means '   '  yachya aat je kahi deshil te as command consider karat
 
