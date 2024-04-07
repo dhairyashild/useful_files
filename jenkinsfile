@@ -39,7 +39,16 @@ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:
             steps {
                   sh 'mvn deploy'  }
         } 
-                
+
+
+                   stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry
+        }
+      }
+    }
+       
                 
         }
 }
