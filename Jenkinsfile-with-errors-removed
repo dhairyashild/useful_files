@@ -43,32 +43,42 @@ sh 'mvn clean package'            // ######## yaml sarakhe varchya line mde yav 
                 }
 
 
+   stage('Building image') {      //##########just add plugin Docker and Docker-pipeline
+      steps{
+        script {
+          dockerImage = docker.build registry
+        }
+      }
+    }
 
-                                  // khalche folder chya location mi change kelyat just samjay dilay tith value projectnusar change hotyat
+OR IF  DOCKERFILE IS NOT IN FOLDER WHERE U CLONE REPO THEN USE BELOW STAGE TO BUILD DOCKER IMAGE
 
-    stage("build-docker"){  
-            steps{
-        sh 'docker --version'     // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
-        dir ('/home/ubuntu/workspace/pipe') { //##### dir nantar ('path') { he bracket dyave  and te close karave command nantar
-        sh ('touch x.txt')         // sh command nantar ('  ') bracket dil tari chalte or nahi dile tari chalte         }
+        stage('Building image') {
+            steps {
+                script {
+                    // Define the path to the Dockerfile
+                    def dockerfilePath = "/var/lib/jenkins/workspace/p1/Dockerfile"
+                    
+                    // Build the Docker image using the Dockerfile at the specified path
+                    dockerImage = docker.build registry, "-f ${dockerfilePath} ."
+                }
             }
-              stage("build-docker"){  
-            steps{
-        sh 'docker --version '      // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
-        dir ('/home/ubuntu/jenkins/workspace/pipe') {
-           // sh command nantar ('          ') bracket dil tari chalte or nahi dile tari chalte         }
-        sh 'docker build -t image2 /home/ubuntu/workspace/'
-            }
-            
-        }  
+        }
+     
+
+  
     
-    }
-    }
-}
+ 
+
         }  
     }
 
                                     
-                                     
-                                      // ########  sh '       '  = terminal samaj means '   '  yachya aat je kahi deshil te as command consider karat
+   // khalche folder chya location mi change kelyat just samjay dilay tith value projectnusar change hotyat
+                                    
+  // ########  sh '       '  = terminal samaj means '   '  yachya aat je kahi deshil te as command consider karat
+        sh 'docker --version '     
+// ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
 
+ // ########   dir ('/home/ubuntu/workspace/pipe') { //##### dir nantar ('path') { he bracket dyave  and te close karave command nantar
+   // sh command nantar ('          ') bracket dil tari chalte or nahi dile tari chalte 
