@@ -21,7 +21,7 @@ pipeline {
 
 
 
-       stage("build") {  
+       stage("maven_build") {  
             steps{
 dir ('/jenkins/workspace/eks-project-full-cicd/'){       // ######## dir('this is path where u need to run commands where below commands run')
 sh 'mvn clean package'            // ######## yaml sarakhe varchya line mde yav as nhi ata hi command varchya kontyahi command chya line shi julat nhi
