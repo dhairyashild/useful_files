@@ -54,34 +54,4 @@ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // stage("build-docker") {
-        //     steps {
-        //         sh 'docker --version'
-        //         dir('/root/workspace/eks-project-full-cicd') {
-                   
-        //         }
-        //     }
-        // }
-        // stage("build-docker-image") {
-        //     steps {
-        //         sh 'docker --version'
-        //         dir('/jenkins/workspace/eks-project-full-cicd') {
-        //             // You can add more shell commands here
-        //         }
-        //         sh 'docker build -t image /jenkins/workspace/eks-project-full-cicd/'
-        //     }
-        // }
     
