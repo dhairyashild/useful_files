@@ -70,10 +70,10 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
 
+# Helm download and repo added
 sudo snap install helm --classic
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update eks
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=my-cluster --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
 
 
 EOF
