@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'docker'
+        label 'worker'
     }
     tools {
         maven "maven"
@@ -14,7 +14,7 @@ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:
         }
         stage("build") {
             steps {
-                dir ('/jenkins/workspace/eks-project-full-cicd/'){
+                dir ('/home/ubuntu/jenkins/workspace/eks-project-full-cicd/'){
                 sh 'mvn clean install'
                 }
                     
@@ -23,10 +23,10 @@ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:
         
         stage("sonar") {
             steps {
-                sh '''mvn clean verify sonar:sonar \
-  -Dsonar.projectKey=eks-proect \
-  -Dsonar.host.url=http://13.126.135.85:9000 \
-  -Dsonar.login=sqp_6b8810eee2c88a916942335fdf51d893463a1286'''
+               mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=eks-project-full-cicd \
+  -Dsonar.host.url=http://43.205.198.59:9000 \
+  -Dsonar.login=sqp_0d6301c1635e55663c4b9d06f6b9d9b912940c60
                 
                 }
                     
