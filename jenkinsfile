@@ -1,4 +1,10 @@
+
 pipeline {
+    environment{
+        AWS_ACCESS_KEY_ID=credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY=credentials('AWS_SECRET_ACCESS_KEY')
+        region= "ap-south-1"
+    }
     agent {
         label 'worker'
     }
@@ -14,7 +20,7 @@ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:
         }
         stage("build") {
             steps {
-                dir ('/home/ubuntu/jenkins/workspace/eks-project-full-cicd/'){
+                dir ('/home/ubuntu/jenkins/workspace/springboot-project-pipeline-code/'){
                 sh 'mvn clean install'
                 }
                     
@@ -24,30 +30,36 @@ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:
         stage("sonar") {
             steps {
               sh '''mvn clean verify sonar:sonar \
-  -Dsonar.projectKey=eks-project-full-cicd \
-  -Dsonar.host.url=http://43.205.198.59:9000 \
-  -Dsonar.login=sqp_0d6301c1635e55663c4b9d06f6b9d9b912940c60'''
-                
+  -Dsonar.projectKey=springboot-project-pipeline-code \
+  -Dsonar.host.url=http://52.66.197.219:9000 \
+  -Dsonar.login=sqp_301a5ec1a74ece60154cffdba037544a0ebc0671'''    
                 }
                     
                 }
-                
-                  stage("jfrog") {
-                       agent {
-                          label 'jfrog'
+
+
+  
+
+stage ('ecr push'){
+    steps{
+        sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/d8y1d3c0'
+        
+         sh 'docker build -t spring-app .'
+        
+         sh 'docker tag spring-app:latest public.ecr.aws/d8y1d3c0/spring-app:${BUILD_NUMBER}'
+         
+         sh 'docker push public.ecr.aws/d8y1d3c0/spring-app:${BUILD_NUMBER}'
     }
+}
+
+stage("terraform clone repo") {
             steps {
-                  sh 'mvn deploy'  }
-        } 
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/dhairyashild/springboot-project-pipeline-code.git']])
+                }
+                    
+                }
 
-
-                   stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry
-        }
-      }
-    }
+      
        
                 
         }
