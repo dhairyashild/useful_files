@@ -49,3 +49,17 @@ stages{
                  }
 
                         }
+
+pipeline {
+    agent {
+        label 'worker'
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo "${BUILD_NUMBER}"
+            }
+        }
+    }
+}
