@@ -12,33 +12,39 @@ pipeline {
         // docker "docker"
     }
     stages {
-        stage("clone") {
+        stage("Clone Repository") {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/dhairyashild/project-repo.git']])
+                // Checkout code from Git
+                checkout scmGit(
+                    branches: [[name: '*/main']],
+                    extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/dhairyashild/project-repo.git']]
+                )
             }
         }
-        stage("build") {
+        stage("Build Project") {
             steps {
-                dir ('/home/ubuntu/jenkins/workspace/springboot-project-pipeline-code/springboot-java-poject') {
+                // Build Maven project
+                dir('/home/ubuntu/jenkins/workspace/springboot-project-pipeline-code/springboot-java-poject') {
                     sh 'mvn clean install'
                 }
             }
         }
-        
-        stage("sonar") {
+        stage("Run SonarQube Analysis") {
             steps {
-                dir ('/home/ubuntu/jenkins/workspace/springboot-project-pipeline-code/springboot-java-poject') {
+                // Run SonarQube analysis
+                dir('/home/ubuntu/jenkins/workspace/springboot-project-pipeline-code/springboot-java-poject') {
                     sh '''mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=springboot-project-pipeline-code \
-                        -Dsonar.host.url=http://13.234.225.243:9000 \
-                        -Dsonar.login=sqp_c378ae31f91a98ef8ca61933d285a101853c6769'''
+                        -Dsonar.projectKey=eks-proect \
+                        -Dsonar.host.url=http://3.109.181.11:9000 \
+                        -Dsonar.login=sqp_e31d168ec336fbd5dc5809022620b7d87e90637b'''
                 }
             }
         }
-
-        stage('ecr push') {
+        stage('Push Docker Image to ECR') {
             steps {
-                dir ('/home/ubuntu/jenkins/workspace/springboot-project-pipeline-code/springboot-java-poject') {
+                // Push Docker image to ECR
+                dir('/home/ubuntu/jenkins/workspace/springboot-project-pipeline-code/springboot-java-poject') {
                     sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/d8y1d3c0'
                     sh 'docker build -t spring-app .'
                     sh 'docker tag spring-app:latest public.ecr.aws/d8y1d3c0/spring-app:latest'
@@ -46,64 +52,58 @@ pipeline {
                 }
             }
         }
-        stage("terraform init") {
+        stage("Initialize Terraform") {
             steps {
-                dir ('continuous-deployment') {
+                // Initialize Terraform
+                dir('continuous-deployment') {
                     sh 'terraform init'
                 }
             }
         }
-                
-        stage("terraform fmt") {
+        stage("Format Terraform Files") {
             steps {
-                dir ('continuous-deployment') {
+                // Format Terraform files
+                dir('continuous-deployment') {
                     sh 'terraform fmt'
                 }
             }
         }
-                
-        stage("terraform plan") {
+        stage("Generate Terraform Plan") {
             steps {
-                dir ('continuous-deployment') {
+                // Generate Terraform plan
+                dir('continuous-deployment') {
                     sh 'terraform plan'
                 }
             }
         }
-          
-        stage("terraform apply") {
+        stage("Apply Terraform Changes") {
             steps {
-                dir ('continuous-deployment') {
+                // Apply Terraform changes
+                dir('continuous-deployment') {
                     sh 'terraform apply --auto-approve'
                 }
             }
         } 
-
-        // stage("terraform destroy") {
-        //     steps {
-        //         dir ('continuous-deployment') {
-        //             sh 'terraform destroy --auto-approve'
-        //         }
-        //     }
-        // } 
-
-        stage("set context") {
+        stage("Set Kubernetes Context") {
             steps {
+                // Set Kubernetes context
                 sh 'aws eks update-kubeconfig --region ap-south-1 --name my-cluster'
                 sh 'kubectl create namespace workshop'
             }
         }
-
-        stage('create service account') {
+        stage('Create IAM Service Account') {
             steps {
+                // Create IAM service account
                 sh 'curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json'
                 sh 'aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json'
                 sh 'eksctl utils associate-iam-oidc-provider --region=ap-south-1 --cluster=my-cluster --approve'
-                sh 'eksctl create iamserviceaccount --cluster=my-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::103849455660:policy/AWSLoadBalancerControllerIAMPolicy --approve --region=ap-south-1' 
+                sh 'eksctl delete iamserviceaccount --cluster=my-cluster --namespace=kube-system --name=aws-load-balancer-controller --region=ap-south-1 --override-existing-serviceaccounts'
+                sh 'eksctl create iamserviceaccount --cluster=my-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::103849455660:policy/AWSLoadBalancerControllerIAMPolicy --approve --override-existing-serviceaccounts --region=ap-south-1'
             }
         }
-                
-        stage("install aws load balancer controller") {
+        stage("Install AWS Load Balancer Controller") {
             steps {
+                // Install AWS load balancer controller
                 sh 'sudo snap install helm --classic'
                 sh 'helm repo add eks https://aws.github.io/eks-charts'
                 sh 'helm repo update eks' 
