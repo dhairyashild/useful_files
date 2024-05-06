@@ -1,0 +1,8 @@
+  stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv(installationName: 'sonar') {
+                    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=java-project'
+                }
+            }
+        } 
+        # first add sonar token generated from sonar website in credentials
