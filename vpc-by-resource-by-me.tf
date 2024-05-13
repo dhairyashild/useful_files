@@ -1,3 +1,13 @@
+1-- vpc resource
+2--subnet add cidr and availabality_zone in resource which mot given in code
+3--igw
+4--pub-rt and add igw above and cidr change 0.0.0.0/0
+5--eip
+6--nat -use above eip here and create it in public subnet
+7--pvt_rt use above nat here
+
+
+
 # vpc
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
@@ -91,6 +101,10 @@ resource "aws_route_table_association" "d" {
   route_table_id = aws_route_table.rt-pvt.id
 }
 
+# eip
+resource "aws_eip" "lb" {
+  domain   = "vpc"
+}
 
 #nat
 resource "aws_nat_gateway" "example" {
@@ -106,10 +120,6 @@ resource "aws_nat_gateway" "example" {
   depends_on = [aws_internet_gateway.gw]
 }
 
-# eip
-resource "aws_eip" "lb" {
-  domain   = "vpc"
-}
 
 #private rt
 resource "aws_route_table" "rt-pvt" {
