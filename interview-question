@@ -1,0 +1,430 @@
+
+LINUX
+suppose you lost pem key and wants to ssh to server how do you do that?
+how to check the running processes on linux
+have you check or monitor the running processes on linux
+how to check open ports on linux?
+linux
+What is Swap Space?
+What is the maximum length for a file name in Linux?
+Which partition stores the system configuration files in Linux system?
+Which command is used to uncompress gzip files?
+What is the difference between soft and hard mounting points?
+What are the file permissions in Linux?
+more questions are from sed, find and awk .
+How to check Memory stats and CPU stats as a Linux admin?
+How to reduce or shrink the size of LVM partition?
+How can you enhance the security of password file?
+What is the difference between Cron and Anacron?
+What command is used to check the number of files, disk space and each user’s defined quota?
+how can you manage memory in linux machines?
+What is the name and path of the main system log?
+how to manage logical volumes?
+Explain /proc filesystem?
+What are the fields in the/etc/passwd file?
+How do you terminate an ongoing process?
+How can you know the execution time of a command?
+How can you append one file to another in  Linux?
+How you can run an Linux program in the background simultaneously when you start your Linux Server?
+How to connect client and server(windows to linux)
+How do you upgrade a kernel in linux?
+suppose user has getting error of permission denied for perticular file how do you resolve the issue as a linux administrator?
+
+EC2 
+difference between nacls and security group
+WHen we use ec2 instance why do we use pem or ppk file
+I want to set up a prod setup and the client is asking me to launch my ec2 instances in private subnet and I want to access through my browser how can it be connected to outside world?
+Lets suppose i want to launch an ec2 instances what all types of instances I can launch in ec2?
+What are various EC2 instances available?’
+If I am not able to login in my instance what am I supposed to do?
+My key pair is lost how am I suppose to access the ec2 instance?
+If the ec2 instance is in the public subnet and the cpu is giving performance issues ?
+What is EC2 service used for?
+Name few types of EC2 instances?
+Diff between T2 series and C series on Ec2 instances?
+What are Elastic IP’s and how is it diffrent from normal Public IP assigned to a EC2 instance?
+Can AWS EC2 access s3 bucket without access key?
+Can we attach a Security group to multiple instances?
+What happen when one node or instance is unreachable?
+Can we create volume in one zone and attach it to a instance in the other zone?
+I have pdf files in an instance and they are eating away the space. I need these files,
+what is solution do you provide for accessing these files?
+What is the need for having your application or instances in private subnets when you
+have public domain through route 53?
+How to launch a instance from AWS
+suppose you have 3 instance running in one region and you want to migrate that instance in anoter region haow did you do that?
+A user is complaining that he is not able to access instance in aws how will you trouble shoot?
+A user is not able to connect to the application hosted by a server? how will you troubleshoot?
+If you have 2 vpc peering connected and one instance is unable to connect with the instance in another vpc how will you trouble shoot what are the things will you check
+
+VPC 
+
+What is VPC?
+32. What is default VPC?
+33. Can we create default VPC?
+34. What is DNS hostnames option used for in VPC?
+35. What are Subnets in VPC?
+What is diffrence between Private and Public subnet?
+How can you design a Highly available network in VPC?
+What is VPC Peering?
+How will you identify which one is public subnet & private subnet in VPC
+What is AWS vpc?
+what is vpc peering and transit gateway?
+How do you create a VPC?
+What is vpc peering and what is the benefit of vpc peering?
+What is VPC and how we can setup VPC?
+
+IAM 
+explain about IAM and some databases in AWS
+What is IAM and its purpose?
+3. What are policies in IAM?
+5. Two types of access for IAM user?
+Difference between IAM Roles & Policies?
+What is the difference between role and role policies, what is users, role and groups in IAM?
+In IAM what is the difference between a role and a group?
+what is IAM Role, User, Policy
+S3
+What are the storage options available in S3?
+Any idea about versioning in s3 is it default behaviour?
+What are different types of s3 buckets that are available? if you want to choose an s3 bucket what are the criteria you would look for?
+Tell me S3 reduced redundancy vs infrequent access?
+76. Tell me S3 Bucket level permissions ?
+What is difference in S3 and other AWS storages?
+24. How do you use S3 bucket in your project?
+
+JENKINS
+how you manage rbac in Jenkins?
+how to add stages in Jenkins?
+what is shared libraries in Jenkins?
+How do you define and implement a pipeline in Jenkins?
+How do you handle failures in your Jenkins pipeline? Can you explain how you troubleshoot issues and failures in the pipeline?
+Can you describe how you monitor the health and performance of your Jenkins pipeline? What tools do you use for this?
+How do you handle security in your Jenkins pipeline? Can you describe the security measures you take to ensure that your pipeline is secure?
+Can you explain how you integrate Prometheus and Grafana with other DevOps tools such as Jenkins or Kubernetes?
+While building Jenkins pipeline we get a replay feature, you don’t have to create a pipeline always when you make changes have you used this replay feature
+Write a jenkins file
+If a certain stage fails you still want it to pass to the next stage of jenkins file how to do it?
+do you know anything about shared library in jenkins?
+What is your understanding when you say cicd?
+Explain the stages in ur project declarative pipeline.
+What is ci/cd?
+How to change Jenkins port no?
+How to connect master slave?
+How to checkout git code in Jenkins?
+How to take backup of ur jenkins?
+Do you have any script to launch slave nodes?
+How do you resolve build failure?
+Difference in soft link and hard link?
+16. How to find a particular word from a file?
+
+GIT AND GITHUB
+What is Version control system or Source code manager?
+Benefits of VCS or SCM?
+What is Git and What is a repository in GIT?
+Diffrence between Git and SVN?
+Two types of git authentication?
+Branches in Git and its purpose?
+What is the common branching pattern in GIT?
+7. What is Pull requests?
+8. How to install git in Linux & Windows?
+9. How to setup repository though command line?
+10. How to setup repository in github and clone it?
+11. What is git clone command used for?
+12. What is git config command user for?
+13. Git config data is stored in what location?
+14. Git config global and local files?
+15. Content of git config file?
+16. Git add command’s purpose?
+17. How to remove/rename files in local git repo?
+18. git commit command’s purpose?
+19. How to sync local git repo data with github?
+20. git fetch?
+21. git merge?
+22. git pull?
+23. How to change branches in local git repo?
+24. What is the difference between ‘git remote’ and ‘git clone’?
+25. git status?
+26. What is the function of ‘git rm’?
+27. What is the function of ‘git checkout’ in git?
+28. What is the use of ‘git log’?
+29. Explain what is commit message?
+30. How to setup github ssh authentication?
+31. What is git webhooks?
+33.Tell me the branching strategies you followed for your project?
+34. What is git rebase?
+35. What is git stash?
+36. What is the difference between git pull and git fetch?
+Differnce between git and svn?
+38. Advantages of git compare with svn?
+39. Explain about staging area in git?
+40. How do you check after git merge …where merging is correctly or not?
+41. How to create branch and delete a branch?
+42. Do you get any conflicts while merging..how can u resolve conflicts?
+43. How can u implement authentication and authorization in git?
+44. What is the difference between git rebase and git merge?
+45. How to merge the code?
+46. Pull request in git hub - ---git pull
+47. Forking a repository in git hub?
+48. Diff between svn and git ---svn is centralized version control and git is Distributed Version Control.? 
+49. What is forking in git repositories?
+50. explain about soft and hard reset and their difference?
+51. What kind of branching and merging you worked on GIT.
+52. with this kind of environment and the git release branching, does it work in Agile methodology?
+53. What is tagging in GIT and what is the diff between feature branching and tagging?
+What are the git commands you use?
+55 Difference in git fetch and git pull?
+56  what is cherry pick command 
+
+Loadbalancer 
+I have 2 servers on aws and I want to load balance the traffic how will I do it? (if i use a load balancer and if I dont want to use a load balancer)
+What are load balancer and explain types?
+What is ELB?
+Diffrence between internet facing and internal ELB?
+What is route 53? How do you configure it? And link it to ELB?
+difference between nlb and alb
+
+
+DOCKER & KUBERNETES
+
+What experience do you have with container orchestration systems like Docker or Kubernetes?
+How do you manage secrets and sensitive data in a Docker containerized environment?
+Can you explain how you integrate Prometheus and Grafana with other DevOps tools such as Jenkins or Kubernetes?
+Can you describe a scenario where you had to troubleshoot an issue in a Docker or Kubernetes environment
+can you write a docker file
+How do you handle scaling and deployment of microservices in a Kubernetes cluster?
+What is Kubernetes why are we using it?
+Can you explain how you integrate Prometheus and Grafana with other DevOps tools such as Jenkins or Kubernetes?
+what is kubernetes architecture?
+Tell me the different services in the kubernetes?
+You have newly joined a company and company is also new to the kubernetes and now you have to deploy to kubernetes and as a infra admin how do you know how many resources you need for an application
+15. explain about kubernetes and what is the use and all
+What is namespaces in kubernetes can you tell me some?
+8.Can you tell me some commands using in kubernetes ?
+.What is Kubernetes
+How do you run docker container?
+How many projects you used  kubernetes?
+number of docker containers deployed to different vms how will you manage there is no kubernetes installed?
+If installed kubernetes how you will deploy this containers into kubernetes cluster?
+Can you tell me the command for creating kubernetes cluster in vm?
+How many nodes we required to create kubernetes cluster?
+Explain what Kubernetes is.
+What does K8s mean?
+Explain what orchestration means and how it relates to DevOps.
+Why is container orchestration important?
+How does Kubernetes make deployment in containers easier?
+How is host application deployment different from container application deployment?
+Explain what the GKE is.
+What is Prometheus?
+What objects can you use in Kubernetes?
+What are stateful sets?
+What is Kubectl?
+Name some crucial Kubectl commands.
+Name the main pod types in Kubernetes.
+What does persistent volume mean?
+Which tools does Kubernetes use to do container monitoring?
+Explain some of the advantages of Kubernetes.
+Explain some of the disadvantages of Kubernetes.
+Name some of the main Kubernetes features.
+Name two main Kubernetes architecture components.
+Why are cloud system administration skills important for Kubernetes developers?
+Why are programming skills important for Kubernetes developers?
+What are the main recommended Kubernetes security measures?
+Which method would you use to set up a static IP for load balancers?
+What are the critical components of a node status in Kubernetes?
+What does the deploying applications process involve in Kubernetes?
+Explain what a replica set does.
+Explain what a replication controller does.
+Explain the difference between replica sets and replication controllers.
+How can an organization enhance the efficiency of its technical operations and keep costs low using Kubernetes?
+How would you help an organization change its deployment strategy with Kubernetes and build a more scalable platform?
+How can Kubernetes help with workload distribution optimization?
+Whatis difference between replica set & deployments?
+what is service and what are service types?
+what is taints & toleration?
+what feilds are needed in yaml file, when you use ndoe port in service?
+what is port, target port, node port?
+what are affinity rules, what feilds you give in yaml for node affinity?
+what are the different types of health checks?
+what are daemon sets?
+what all component of worker node
+If scheduler went down then what are the impact over existing application  - no impact
+If etcd went down then what are the impact over existing application - no impact
+If etcd went down then what are the impact over existing application when it restart - i will be impact
+if kubelet down then what are the impact - pod will be impacted
+which conatiner runtime we are using in our infrastructure - containerD
+what is kube-proxy
+What is daemon set
+what is diffrence between deployment and statefulset
+What are main parameter we have to define in pod yaml file ?
+which type of application running in your env - mysql...atlas...busybox...elastich seacrh...
+what are the command to uodate image in deployment - kubectl set image deployment/my-deployment mycontainer=myimage:1.9.1
+How do we roll back application when we are doing upgradation ?
+How many types of service
+what are difference between clusterIp and NodePort IP
+What are the range of NodePort service
+What is config map and why do we use
+What is secret and why do we use
+How many types of secret
+How do we extend size of existing PV
+do we require downtime durung extend pv --- Yes we require
+config map update - we need downtime,,..we have only restart pod
+If pod down how do we fix
+If PVC are in pending state then how do we fix
+If Pod are getting imagePullBack off error  then how do we fix
+If storage class is missing do we create PVC
+If we delete pod then pv is also deleted  -- No its deleted 
+if pvc deleted then corresponding pv is also deleted? its depeend upon reclaim policy...if reclaim policy would be delete then automati would be deleted  
+if reclaim plocy would be Retain then pv would not be deleted , we have manually delete
+I am not able to extend persistent volume , how do we fix ?  
+Pod and stuck terminating state how do we delete permanently ?
+sometime we are trying to delete namespace but it stuck in terminating state , how do we fix ?
+Have you done AKS cluster upgradation, explain it all process ?
+What all challenges you have faced during upgradation and how do you fix those issue ?
+How do we take backup and restoration of namespace and pod backup ?
+How do we assign permision over namespace and cluster level access
+what is cordon and drain 
+I want to restrict pod on a particular node how do we acheive
+i want not not schdule any pod on a particular worker node --- taint and toleration
+What type of issue you have faced in your project
+what is taint and toleration
+i want a not any single pod will schdule on worker node  - using taint and toleration
+how do we secure our cluster
+How do we assign permission on a particular namespace
+What is Role and Cluster Role
+What is Role Binding and Cluster Role binding
+What is HPA and VPA
+How to we autoscale our cluster
+How do we take backup of etcd
+What is readiness and liveness
+What is init container
+
+DOCKER
+
+Difference between CMD and entry point
+why we use labels in dockerfile?
+how to check docker logs ?
+how to bind docker volumes
+Explain how Kubernetes is related to Docker.
+Name some differences between Kubernetes and Docker Swarm.
+hat is difference between docker swarm and kubernetes
+Our var/lib/docker filesystem has been full, how do we fix this issue
+Current roles & responsibilities?
+What is Docker compose?
+What is Docker server version?
+What are the advantages of Docker?
+How do create Docker image from Docker file?
+What is Docker data centre?
+What is Docker hub & uses?
+What are the types of Docker networks?
+How do you define network in the Docker compose file?
+What are the basic parameters required in the Docker compose file?
+How to store the data present in the Docker container in the AWS?
+If we define the Docker volume in the docker compose file is it possible to share
+Why we need to mention dual ports(8080:8080) in docker run command
+Differnce between Copy and Add
+How to write a docker file to deploy a war file
+We have private repository and don’t have base images .how can deploy a war file?
+Write a simple docker file to deploy a war file by using base images?
+Difference between docker compose and docker swarm
+why we need to use docker compose?
+Tell me about Docker Network.
+I want deploy containers but have storage persisentsar  problems in AWS and in
+Docker?
+What is Docker file commands
+How to port forward in docker
+
+ANSIBLE 
+What is  inventory file used for and default inventory host location?
+What is ansible configuration file used for and its default path?
+Do you write your inventory file?
+How many types of variables and precedence?
+Write the command to find the python version on nodes?
+What is the file structure of ansible roles?
+What happen when one task  is failed in playbook?
+i have 20 servers , I want to install one package in 5 servers and other package in next 5 servers..like that How to write in ansible script for that…Explain?
+What is the architecture of ansible?
+How do I supply variables while executing the playbook in ansible?
+Explain about the tags in ansible?
+How to execute failure playbook again?
+How is ansible diffrent than any other configuration management tool?
+Ansible playbooks are written in what format?
+What is a module in Ansible?
+What is inventory used for in ansible?
+Name three places where ansible variables can be stored?
+What connection anible establishes with  linux and windows node.
+Diffrence between Remote and local execution in ansible.
+What is the purpose and location of  ansible.cfg file.
+Name any two settings from anible.cfg file.
+Please write below a sample inventory file with host, group & group of groups syntax in it.
+What is the diffrence between group_vars & host_vars directory?
+What are adhocs commands used for & write below syntax of a ad hocs command?
+Write below ad hoc command to gather fact varibales on all the hosts from the inventory file?
+What format does ansible ad hoc command returns the output?
+Name three types of modules in ansible?
+Name any 10 modules in ansible that you have used.
+How to list all the ansible core modules from command line.
+How to display all the options/attributes for apt module from command line.
+How can you check mandatory option for any module from command line?
+What is setup module used for?
+Write down sample global play declaration
+Write down any two tasks from playbook with its proper format and names.
+Whats is the diffrence between sudo and become module and its purpose.
+Write down playbook syntax of starting ntp service on webserver and dbservers host group at once.
+How to take user input from a playbook?
+What is debug module used for in playbooks?
+How tostore output of any task into a varible from playbook?
+What are handlers used for in ansible and how is it diffrent from tasks?
+Conditional execution in ansible is used for what purpose and write down its syntax with small description?
+What are templates used for and its format?
+What are ansible roles and its purpose?
+Command to generate ansible roles directory structure.
+Name 5 directories from ansible roles.
+Write a Ansible task that can copy the file to remote location with the ownership of Jboss?
+What is local action in Ansible?
+What are the roles in Ansible?
+Write a playbook for installation of apache in ubuntu and centos?
+How to create a role in ansible?
+Different types of inventories in ansible?
+if we want system information of machine how we will get the data with ansible like we use facter in puppet ?
+In which language we write playbooks in ansible?
+Activity that we use with ansibles or advantage Functionality or purpose of ansible using in your project?
+How to launch an LDAP server using ansible?
+How ansible works.. and what are the playbook written other than the basic playbooks ?
+For example there are 4 aps server running and 4 websers running and we have a new code change and this change should automatically copy to these different servers using ansible, how I will come to know new code is generated.
+Use Jenkins with POLL SCM option and after artifact is generated  using ansible to push suing copy module.
+Have u done any automation like app goes down then for self healing of the app kind of the thing. 73 .Have  u written any playbook. Exp
+what is a dynamic inventory  in ansible?
+How can you manage cloud services with ansible?
+How can you protect sensitive information in ansible?
+How can you save the output of module execution in ansible?
+How can you manage error handling?
+what are conditionals in ansible?
+How can you the fact varibales in ansible?
+can we create an ansible module ?
+How can you do provisioning with ansible?
+BASH Vs Python Vs Configuration Management Tools?
+What is ansible playbook
+28. Syntax of ansible playbook
+How u run ansible playbook?
+
+TERRAFORM 
+What is Terraform provisioner?
+What is Terraform module?
+Is it possible to lock Terraform module?
+How do you select availability zones using Terraform?
+What is Terraform provider versioning?
+What is Infrastructure-as-Code (IaC) , have you used tools like Terraform or CloudFormation?
+Where does the role of terraform fit in your project?
+Where does it get called, where is terraform file stored? how does it gets created how does it work?
+write a terraform file?
+what is terraform module?
+what is terraform tfstate file?
+what is terraform variable?
+if my statefile delete by mistake then what provision do you have?
+]what is difference between terraform.tfvars file and variable.tf file
+how do you differentiate the dev,QA, PROD enviromnemt in terraform?
+explain 10 bits of file or directory?
+what is terraform module
+explain what is terraform and its advantage?
+what is terraform workspace?
+
