@@ -1,0 +1,86 @@
+pipeline {
+    agent any
+    parameters {
+        choice(name: 'RUN_STAGE', choices: ['Full', 'Build', 'Test', 'Image', 'Push', 'Deploy'], description: 'Choose stage to run or Full for entire pipeline')
+    }
+    stages {
+        stage('Build') {
+            when {
+                expression { params.RUN_STAGE == 'Full' || params.RUN_STAGE == 'Build' }
+            }
+            steps {
+                echo 'Running Build stage'
+                // Add your build steps here
+            }
+        }
+        stage('Test') {
+            when {
+                expression { params.RUN_STAGE == 'Full' || params.RUN_STAGE == 'Test' }
+            }
+            steps {
+                echo 'Running Test stage'
+                // Add your test steps here
+            }
+        }
+        stage('Image') {
+            when {
+                expression { params.RUN_STAGE == 'Full' || params.RUN_STAGE == 'Image' }
+            }
+            steps {
+                echo 'Running Image stage'
+                // Add your image steps here
+            }
+        }
+        stage('Push') {
+            when {
+                expression { params.RUN_STAGE == 'Full' || params.RUN_STAGE == 'Push' }
+            }
+            steps {
+                echo 'Running Push stage'
+                // Add your push steps here
+            }
+        }
+        stage('Deploy') {
+            when {
+                expression { params.RUN_STAGE == 'Full' || params.RUN_STAGE == 'Deploy' }
+            }
+            steps {
+                echo 'Running Deploy stage'
+                // Add your deploy steps here
+            }
+        }
+    }
+}
+
+
+
+explaination
+
+1) we add stages as choice parameters in jenkins but it takes that stages as boolean true or false due to below when code
+
+Explanation of the when Condition
+when {
+    expression { <Boolean expression> }
+}
+
+
+2)i have explained last stage how it works with when
+
+   stage('Deploy') {
+            when {
+                expression { params.RUN_STAGE == 'Full' || params.RUN_STAGE == 'Deploy' }
+            }
+
+when{
+ expression { expression1 || expression2}
+}
+
+|| operator in Groovy is known as the logical OR operator. 
+It is used to combine two Boolean expressions and returns true if at least one of the expressions evaluates to true. 
+
+expression1 and expression2: These are Boolean expressions that will be evaluated.
+Behavior
+If expression1 is true, the overall result is true, regardless of the value of expression2.
+If expression1 is false, the overall result depends on expression2:
+If expression2 is true, the overall result is true.
+If expression2 is false, the overall result is false.

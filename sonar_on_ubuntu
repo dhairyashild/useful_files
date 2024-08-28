@@ -1,0 +1,37 @@
+Install sonarqube on UBUNTU
+
+
+1. Create any server with at least minimum of 2 GB of RAM
+
+2. ssh to to the server and Install Java
+
+sudo apt-get update -y
+sudo apt-get install openjdk-17-jdk -y
+
+
+3. To download latest version of sonarqube visit the below URL:
+
+I would like to download the sonarqube file to /opt location
+
+cd /opt
+https://www.sonarsource.com/products/sonarqube/downloads/
+
+On ec2 machine you can download the sonarqube by wget command:
+
+wget <download-url>
+
+
+4. Unzip downloaded file
+
+sudo apt-get install unzip -y
+unzip <file-name>
+
+5. Now do remember sonarqube can not be start with the root user So lets create the SONARADMIN USER to run the sonarqube
+
+#useradd -s /bin/bash sonaradmin
+#adduser sonaradmin sonaradmin
+#chown -R sonaradmin:sonaradmin /opt/sonarqube
+
+6. Go to bin directory and run the sonar script to start the sonarqube tool
+
+7. Open the 9000 port as sonarqube runs on the 9000 port

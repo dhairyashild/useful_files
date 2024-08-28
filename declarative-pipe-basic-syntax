@@ -1,0 +1,65 @@
+pipeline {   
+         agent any 
+
+             OR        
+
+         agent { label 'docker' }  // ###### if u gave this outside any stage like this line agent all jobs data saved on this label agent server
+                
+            OR  
+
+         agent {
+               label 'docker'
+               }
+
+
+  tools{
+      maven "maven"              // ###### SMALL LETTERS 1st word & "here u must write which name u gave in Tools--Configure tools"
+                                 // ###### no need to add DOCKER , SONARQUBE , JFROG in tools section
+          }
+
+
+
+
+stages{
+        stage('clone')  {          
+            steps{               
+######################### if u want to give command only without mensionning folder
+                1)     sh ' COMMAND  '
+
+
+######################### if u want to gave command in particular folder EG. below command work in this folder ---   /jenkins/workspace/eks-project-full-cicd/   
+
+
+
+                2)      dir ('/jenkins/workspace/eks-project-full-cicd/'){  
+                         sh ' COMMAND  '
+
+                          OR 
+                         script {
+                           PASTE HERE SCRIPT WHICH U GET FROM PIPELINE SYNTAX CREATED AUTOMATIC ON JENKINS
+                                 }
+
+                                                                         }
+
+                  3)
+                           dir ('/PATH/'){  
+                      
+                                         }
+
+                 }
+
+                        }
+
+pipeline {
+    agent {
+        label 'worker'
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo "${BUILD_NUMBER}"
+            }
+        }
+    }
+}
