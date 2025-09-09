@@ -14,6 +14,7 @@ def simulate_cpu_spike(duration=30, cpu_percent=80):
         for i in range(1, 1001):
             result += i
 
+    
     # Wait for the rest of the time interval
     elapsed_time = time.time() - start_time
     remaining_time = max(0, duration - elapsed_time)
