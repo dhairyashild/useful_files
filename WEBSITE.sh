@@ -3,7 +3,7 @@
 sudo apt-get update -y
 sudo apt-get install docker.io -y
 sudo usermod -aG docker ${USER}
-newgrp docker
+sudo newgrp docker
 docker --version
 
 git clone https://github.com/dhairyashild/java-source-code.git
